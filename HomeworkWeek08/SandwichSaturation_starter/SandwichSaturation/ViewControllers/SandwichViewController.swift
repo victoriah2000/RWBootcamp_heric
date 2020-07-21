@@ -86,18 +86,30 @@ class SandwichViewController: UITableViewController, SandwichDataSource {
   
   func filterContentForSearchText(_ searchText: String,
                                   sauceAmount: SauceAmount? = nil) {
-    filteredSandwiches = sandwiches.filter { (sandwich: Sandwich) -> Bool in
-      let doesSauceAmountMatch = sauceAmount == .any || sandwich.sauceAmount?.sauceAmount == sauceAmount
-
-      if isSearchBarEmpty {
-        return doesSauceAmountMatch
-      } else {
-        return doesSauceAmountMatch && sandwich.name!.lowercased()
-          .contains(searchText.lowercased())
-      }
-    }
     
-    tableView.reloadData()
+    let request: NSFetchRequest<Sandwich> = Sandwich.fetchRequest()
+    
+    var predicates: [NSPredicate] = []
+    
+    if !searchText.isEmpty {
+      let searchTextPredicate = NSPredicate(format: "name CONTAINS[cd] %@", searchText)
+      predicates.append(searchTextPredicate)
+    }
+
+    if let sauceAmount = sauceAmount, sauceAmount != .any {
+      let sauceAmountPredicate = NSPredicate(format: "sauceAmount.sauceAmountString == %@", sauceAmount.rawValue)
+      predicates.append(sauceAmountPredicate)
+    }
+    request.predicate = NSCompoundPredicate(andPredicateWithSubpredicates: predicates)
+    
+    let sort = NSSortDescriptor(key: #keyPath(Sandwich.name), ascending: true, selector: #selector(NSString.caseInsensitiveCompare(_:)))
+    request.sortDescriptors = [sort]
+    do {
+      filteredSandwiches = try context.fetch(request)
+    } catch let error as NSError {
+      print("Could not fetch. \(error), \(error.userInfo)")
+    }
+    tableView?.reloadData()
   }
   
   var isFiltering: Bool {
