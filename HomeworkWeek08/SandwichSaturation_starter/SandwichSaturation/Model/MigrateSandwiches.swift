@@ -48,7 +48,7 @@ func migrateSandwiches() throws {
     
     let sandwiches = loadSandwiches()
     for sandwich in sandwiches {
-      let new = Sandwich(entity: Sandwich.entity(), insertInto: context)
+      let new = SandwichModel(entity: SandwichModel.entity(), insertInto: context)
       new.name = sandwich.name
       new.sauceAmount = fetchSauceModel(sandwich.sauceAmount.rawValue)
       new.imageName = sandwich.imageName

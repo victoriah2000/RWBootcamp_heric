@@ -17,8 +17,8 @@ class SandwichViewController: UITableViewController, SandwichDataSource {
   private let appDelegate = UIApplication.shared.delegate as! AppDelegate
   private let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
   let searchController = UISearchController(searchResultsController: nil)
-  var sandwiches = [Sandwich]()
-  var filteredSandwiches = [Sandwich]()
+  var sandwiches = [SandwichModel]()
+  var filteredSandwiches = [SandwichModel]()
   let  selectedIndexKeyName = "selectedIndex"
 
   required init?(coder: NSCoder) {
@@ -53,9 +53,9 @@ class SandwichViewController: UITableViewController, SandwichDataSource {
   }
 
   func refresh() {
-    let request = Sandwich.fetchRequest() as NSFetchRequest<Sandwich>
+    let request = SandwichModel.fetchRequest() as NSFetchRequest<SandwichModel>
 
-    let sort = NSSortDescriptor(key: #keyPath(Sandwich.name), ascending: true, selector: #selector(NSString.caseInsensitiveCompare(_:)))
+    let sort = NSSortDescriptor(key: #keyPath(SandwichModel.name), ascending: true, selector: #selector(NSString.caseInsensitiveCompare(_:)))
     request.sortDescriptors = [sort]
     do {
       sandwiches = try context.fetch(request)
@@ -66,7 +66,7 @@ class SandwichViewController: UITableViewController, SandwichDataSource {
   }
   
   func saveSandwich(_ sandwich: SandwichData) {
-    let new = Sandwich(entity: Sandwich.entity(), insertInto: context)
+    let new = SandwichModel(entity: SandwichModel.entity(), insertInto: context)
     new.name = sandwich.name
     new.sauceAmount = fetchSauceModel(sandwich.sauceAmount.rawValue)
     new.imageName = sandwich.imageName
@@ -87,7 +87,7 @@ class SandwichViewController: UITableViewController, SandwichDataSource {
   func filterContentForSearchText(_ searchText: String,
                                   sauceAmount: SauceAmount? = nil) {
     
-    let request: NSFetchRequest<Sandwich> = Sandwich.fetchRequest()
+    let request: NSFetchRequest<SandwichModel> = SandwichModel.fetchRequest()
     
     var predicates: [NSPredicate] = []
     
@@ -102,7 +102,7 @@ class SandwichViewController: UITableViewController, SandwichDataSource {
     }
     request.predicate = NSCompoundPredicate(andPredicateWithSubpredicates: predicates)
     
-    let sort = NSSortDescriptor(key: #keyPath(Sandwich.name), ascending: true, selector: #selector(NSString.caseInsensitiveCompare(_:)))
+    let sort = NSSortDescriptor(key: #keyPath(SandwichModel.name), ascending: true, selector: #selector(NSString.caseInsensitiveCompare(_:)))
     request.sortDescriptors = [sort]
     do {
       filteredSandwiches = try context.fetch(request)
@@ -136,9 +136,9 @@ class SandwichViewController: UITableViewController, SandwichDataSource {
       filteredSandwiches[indexPath.row] :
       sandwiches[indexPath.row]
 
-    cell.thumbnail.image = UIImage.init(imageLiteralResourceName: sandwich.imageName!)
+    cell.thumbnail.image = sandwich.imageName.map(UIImage.init(imageLiteralResourceName:))
     cell.nameLabel.text = sandwich.name
-    cell.sauceLabel.text = String(describing: sandwich.sauceAmount?.sauceAmount ?? SauceAmount.none)
+    cell.sauceLabel.text = sandwich.sauceAmount.map { String.init(describing:$0.sauceAmount) } ?? "--"
     return cell
   }
 }
