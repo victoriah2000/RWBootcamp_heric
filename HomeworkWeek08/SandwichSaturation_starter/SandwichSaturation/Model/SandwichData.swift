@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum SauceAmount: Decodable {
+enum SauceAmount: Decodable, CustomStringConvertible {
   case any
   case none
   case tooMuch
@@ -23,13 +23,6 @@ enum SauceAmount: Decodable {
       return "Drowning in Sauce"
     }
   }
-}
-
-struct SandwichData: Decodable {
-  
-  let name: String
-  let sauceAmount: SauceAmount
-  let imageName: String
 }
 
 extension SauceAmount: CaseIterable { }
@@ -53,4 +46,11 @@ extension SauceAmount: RawRepresentable {
     case .tooMuch: return "Too Much"
     }
   }
+}
+
+struct SandwichData: Decodable {
+  
+  let name: String
+  let sauceAmount: SauceAmount
+  let imageName: String
 }

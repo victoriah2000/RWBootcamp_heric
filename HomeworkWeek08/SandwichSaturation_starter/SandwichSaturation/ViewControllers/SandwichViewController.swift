@@ -23,14 +23,11 @@ class SandwichViewController: UITableViewController, SandwichDataSource {
 
   required init?(coder: NSCoder) {
     super.init(coder: coder)
-    refresh()    
   }
   
   override func viewDidLoad() {
     super.viewDidLoad()
     
-    
-        
     let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(presentAddView(_:)))
     navigationItem.rightBarButtonItem = addButton
     
@@ -46,6 +43,9 @@ class SandwichViewController: UITableViewController, SandwichDataSource {
     
     // More configuration
     definesPresentationContext = true
+    
+    // Load the data
+    refresh()
   }
 
   override func viewWillAppear(_ animated: Bool) {
@@ -86,16 +86,16 @@ class SandwichViewController: UITableViewController, SandwichDataSource {
   
   func filterContentForSearchText(_ searchText: String,
                                   sauceAmount: SauceAmount? = nil) {
-//    filteredSandwiches = sandwiches.filter { (sandwich: SandwichData) -> Bool in
-//      let doesSauceAmountMatch = sauceAmount == .any || sandwich.sauceAmount == sauceAmount
-//
-//      if isSearchBarEmpty {
-//        return doesSauceAmountMatch
-//      } else {
-//        return doesSauceAmountMatch && sandwich.name.lowercased()
-//          .contains(searchText.lowercased())
-//      }
-//    }
+    filteredSandwiches = sandwiches.filter { (sandwich: Sandwich) -> Bool in
+      let doesSauceAmountMatch = sauceAmount == .any || sandwich.sauceAmount?.sauceAmount == sauceAmount
+
+      if isSearchBarEmpty {
+        return doesSauceAmountMatch
+      } else {
+        return doesSauceAmountMatch && sandwich.name!.lowercased()
+          .contains(searchText.lowercased())
+      }
+    }
     
     tableView.reloadData()
   }
@@ -126,8 +126,7 @@ class SandwichViewController: UITableViewController, SandwichDataSource {
 
     cell.thumbnail.image = UIImage.init(imageLiteralResourceName: sandwich.imageName!)
     cell.nameLabel.text = sandwich.name
-    cell.sauceLabel.text = sandwich.sauceAmount!.description
-
+    cell.sauceLabel.text = String(describing: sandwich.sauceAmount?.sauceAmount ?? SauceAmount.none)
     return cell
   }
 }
