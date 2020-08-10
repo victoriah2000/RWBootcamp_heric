@@ -89,6 +89,7 @@ class ViewController: UIViewController {
       if self.isMenuCollapsed {
         UIView.animate(withDuration: 1) {
           self.applyAnimations()
+          self.patternView.transform = self.patternView.transform.rotated(by: .pi)
           self.view.layoutIfNeeded()
         }
       }
@@ -98,6 +99,8 @@ class ViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     updateMenu()
+    targetView.layer.borderColor = UIColor.orange.cgColor
+    targetView.layer.borderWidth = 4    
   }
 
   @IBOutlet weak var targetView: UIView!
@@ -127,5 +130,6 @@ class ViewController: UIViewController {
   @IBOutlet weak var colorButtonConstraint: NSLayoutConstraint!
   @IBOutlet weak var moveButtonConstraint: NSLayoutConstraint!
   
+  @IBOutlet weak var patternView: UIImageView!
 }
 
