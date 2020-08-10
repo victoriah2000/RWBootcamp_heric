@@ -8,29 +8,16 @@
 
 import UIKit
 
-
 enum TargetAnimation {
   case color(UIColor)
   case size(CGFloat)
   case move(CGPoint)
   
+  private static var colors: [UIColor] =
+    [.blue, .yellow, .red, .green, .purple]
+  
   static func makeRandomColor() -> Self {
-    let color: UIColor
-    switch Int.random(in: 1...5) {
-    case 1:
-      color = .blue
-    case 2:
-      color = .yellow
-    case 3:
-      color = .red
-    case 4:
-      color = .green
-    case 5:
-      color = .purple
-    default:
-      fatalError()
-    }
-    return .color(color)
+    colors.randomElement().map { .color($0) }!
   }
   
   static func makeRandomSize() -> Self {
