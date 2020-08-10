@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="AnimationProject" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pfL-TC-g37" userLabel="Size">
+                                <rect key="frame" x="171" y="610" width="72" height="72"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="pfL-TC-g37" secondAttribute="height" multiplier="1:1" id="dY5-XT-bcE"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                <color key="tintColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" image="textformat.size" catalog="system">
+                                    <color key="titleColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="54"/>
+                                </state>
+                                <connections>
+                                    <action selector="sizeTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="yYK-42-EZB"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xt9-IX-rT4" userLabel="Move">
+                                <rect key="frame" x="255.5" y="702.5" width="62" height="56"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                <color key="tintColor" systemColor="systemPinkColor" red="1" green="0.1764705882" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" image="arrow.right.arrow.left.square.fill" catalog="system">
+                                    <color key="titleColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="54"/>
+                                </state>
+                                <connections>
+                                    <action selector="moveTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="QQp-GN-jo9"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CGB-k9-TuU" userLabel="Color">
+                                <rect key="frame" x="88.5" y="695.5" width="70" height="70"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                <color key="tintColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" image="paintbrush.fill" catalog="system">
+                                    <color key="titleColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="54"/>
+                                </state>
+                                <connections>
+                                    <action selector="colorTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Ghk-lp-nfy"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M2j-g2-6na" userLabel="Play">
+                                <rect key="frame" x="175.5" y="699" width="63" height="63"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="M2j-g2-6na" secondAttribute="height" multiplier="1:1" id="Qbx-5C-Zyg"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                <color key="tintColor" systemColor="systemPurpleColor" red="0.68627450980000004" green="0.32156862749999998" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" image="play.circle" catalog="system">
+                                    <color key="titleColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="54"/>
+                                </state>
+                                <connections>
+                                    <action selector="playTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Mzm-OQ-8dB"/>
+                                </connections>
+                            </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GBk-CE-Vq3" userLabel="Target">
+                                <rect key="frame" x="157" y="187" width="100" height="100"/>
+                                <color key="backgroundColor" systemColor="systemTealColor" red="0.35294117650000001" green="0.7843137255" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="GBk-CE-Vq3" secondAttribute="height" multiplier="1:1" id="J3w-rV-Bp2"/>
+                                    <constraint firstAttribute="width" constant="100" id="Qrn-Cb-FH1"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="Xt9-IX-rT4" firstAttribute="centerY" secondItem="M2j-g2-6na" secondAttribute="centerY" id="19X-6N-1T3"/>
+                            <constraint firstItem="M2j-g2-6na" firstAttribute="trailing" secondItem="CGB-k9-TuU" secondAttribute="trailing" constant="80" id="5NM-Ef-bcW"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="M2j-g2-6na" secondAttribute="bottom" constant="100" id="7Cb-XC-WdW"/>
+                            <constraint firstItem="M2j-g2-6na" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="C7J-Je-pLX"/>
+                            <constraint firstItem="M2j-g2-6na" firstAttribute="bottom" secondItem="pfL-TC-g37" secondAttribute="bottom" constant="80" id="NOr-gD-F0L"/>
+                            <constraint firstItem="GBk-CE-Vq3" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="QoO-bM-eQe"/>
+                            <constraint firstItem="pfL-TC-g37" firstAttribute="centerX" secondItem="M2j-g2-6na" secondAttribute="centerX" id="Wyu-VI-ibZ"/>
+                            <constraint firstItem="GBk-CE-Vq3" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="143" id="bBB-AA-Rcl"/>
+                            <constraint firstItem="Xt9-IX-rT4" firstAttribute="leading" secondItem="M2j-g2-6na" secondAttribute="leading" constant="80" id="wEH-71-s38"/>
+                            <constraint firstItem="CGB-k9-TuU" firstAttribute="centerY" secondItem="M2j-g2-6na" secondAttribute="centerY" id="x6U-RG-efu"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                    </view>
+                    <connections>
+                        <outlet property="colorButtonConstraint" destination="5NM-Ef-bcW" id="i6I-R3-L3X"/>
+                        <outlet property="moveButtonConstraint" destination="wEH-71-s38" id="nBv-Iv-LgN"/>
+                        <outlet property="sizeButtonContraint" destination="NOr-gD-F0L" id="Zyz-NO-Z5o"/>
+                        <outlet property="targetSizeConstraint" destination="Qrn-Cb-FH1" id="wFP-zY-9wv"/>
+                        <outlet property="targetView" destination="GBk-CE-Vq3" id="k3y-0f-Xnd"/>
+                        <outlet property="targetXContraint" destination="QoO-bM-eQe" id="Mnj-XK-K9L"/>
+                        <outlet property="targetYConstraint" destination="bBB-AA-Rcl" id="GvJ-Qd-09q"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="137.68115942028987" y="117.85714285714285"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="arrow.right.arrow.left.square.fill" catalog="system" width="128" height="114"/>
+        <image name="paintbrush.fill" catalog="system" width="128" height="125"/>
+        <image name="play.circle" catalog="system" width="128" height="121"/>
+        <image name="textformat.size" catalog="system" width="128" height="82"/>
+    </resources>
+</document>
